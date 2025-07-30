@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }}</title>
+  <link rel="icon" type="image/png" href="/static/castle.png">
+  <link rel="stylesheet" href="/static/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="scroll-container">
+    <div class="parchment">
+      <h1>{{ .Title }}</h1>
+      <p class="welcome-text">Welcome, traveler. Explore my skills forged in the digital realm.</p>
+
+      <div class="medieval-flourish"></div>
+
+      <section class="skills-section">
+        <h2>Arsenal of Knowledge</h2>
+        <div class="skills-container">
+          <div class="skills-row skills-row-1">
+            {{ range $index, $skill := .Stacks }}
+              {{ if lt $index 6 }}
+                <div class="skill-item">
+                  <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+          <div class="skills-row skills-row-2">
+            {{ range $index, $skill := .Stacks }}
+              {{ if and (ge $index 6) (lt $index 12) }}
+                <div class="skill-item">
+                  <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+          <div class="skills-row skills-row-3">
+            {{ range $index, $skill := .Stacks }}
+              {{ if ge $index 12 }}
+                <div class="skill-item">
+                  <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+      </section>
+
+      <div class="medieval-flourish"></div>
+
+      <section class="contact-section">
+        <h2>Contacts</h2>
+        <div class="contact-icons">
+          <a href="mailto:vian@example.com" class="contact-icon email" title="Email"></a>
+          <a href="https://github.com/vianlucius" class="contact-icon github" title="GitHub"></a>
+          <a href="https://linkedin.com/in/vianlucius" class="contact-icon linkedin" title="LinkedIn"></a>
+        </div>
+      </section>
+
+      <div class="decorative-border"></div>
+    </div>
+  </div>
+</body>
+</html>
