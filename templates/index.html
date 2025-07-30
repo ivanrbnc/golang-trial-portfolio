@@ -18,32 +18,44 @@
       <section class="skills-section">
         <h2>Arsenal of Knowledge</h2>
         <div class="skills-container">
+          <!-- Row 1: 9 items scrolling left -->
           <div class="skills-row skills-row-1">
-            {{ range $index, $skill := .Stacks }}
-              {{ if lt $index 6 }}
-                <div class="skill-item">
-                  <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
-                </div>
+            <div class="skill-loop">
+              {{ range $index, $skill := .Stacks }}
+                {{ if lt $index 9 }}
+                  <div class="skill-item">
+                    <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                  </div>
+                {{ end }}
               {{ end }}
-            {{ end }}
+              {{ range $index, $skill := .Stacks }}
+                {{ if lt $index 9 }}
+                  <div class="skill-item">
+                    <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                  </div>
+                {{ end }}
+              {{ end }}
+            </div>
           </div>
+
+          <!-- Row 2: 8 items scrolling right -->
           <div class="skills-row skills-row-2">
-            {{ range $index, $skill := .Stacks }}
-              {{ if and (ge $index 6) (lt $index 12) }}
-                <div class="skill-item">
-                  <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
-                </div>
+            <div class="skill-loop">
+              {{ range $index, $skill := .Stacks }}
+                {{ if ge $index 9 }}
+                  <div class="skill-item">
+                    <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                  </div>
+                {{ end }}
               {{ end }}
-            {{ end }}
-          </div>
-          <div class="skills-row skills-row-3">
-            {{ range $index, $skill := .Stacks }}
-              {{ if ge $index 12 }}
-                <div class="skill-item">
-                  <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
-                </div>
+              {{ range $index, $skill := .Stacks }}
+                {{ if ge $index 9 }}
+                  <div class="skill-item">
+                    <img src="/static/{{ $skill.Icon }}" alt="{{ $skill.Name }}">
+                  </div>
+                {{ end }}
               {{ end }}
-            {{ end }}
+            </div>
           </div>
         </div>
       </section>

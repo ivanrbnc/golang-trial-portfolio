@@ -218,26 +218,27 @@ h2::after {
   white-space: nowrap;
 }
 
-.skills-row-1 {
-  animation: scrollLeft 30s linear infinite;
+.skill-loop {
+  display: flex;
+  width: max-content;
 }
 
-.skills-row-2 {
-  animation: scrollRight 35s linear infinite;
-}
-
-.skills-row-3 {
+.skills-row-1 .skill-loop {
   animation: scrollLeft 40s linear infinite;
 }
 
+.skills-row-2 .skill-loop {
+  animation: scrollRight 50s linear infinite;
+}
+
 @keyframes scrollLeft {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @keyframes scrollRight {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 .skill-item {

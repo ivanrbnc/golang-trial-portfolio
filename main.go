@@ -20,7 +20,10 @@ type PageData struct {
 func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	tmpl := template.Must(template.ParseFiles("templates/index.html"))
+	funcMap := template.FuncMap{
+		"mod": func(i, j int) int { return i % j },
+	}
+	tmpl := template.Must(template.New("index.html").Funcs(funcMap).ParseFiles("templates/index.html"))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		data := PageData{
