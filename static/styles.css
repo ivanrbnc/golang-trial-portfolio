@@ -19,20 +19,13 @@
 
 body {
   font-family: 'Cinzel', serif;
-  background: linear-gradient(45deg, #8b4513, #654321, #8b4513);
-  background-size: 400% 400%;
-  animation: backgroundShift 20s ease infinite;
+  background: url('brick-wall.png') repeat;
+  background-size: 300px 300px;
   min-height: 100vh;
   padding: 20px;
   color: var(--ink);
   position: relative;
   overflow-x: hidden;
-}
-
-@keyframes backgroundShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 body::before {
@@ -281,6 +274,7 @@ h2::after {
   justify-content: center;
   gap: 40px;
   margin: 40px 0;
+  flex-wrap: wrap;
 }
 
 .contact-icon {
@@ -298,6 +292,7 @@ h2::after {
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
+  overflow: hidden;
 }
 
 .contact-icon:hover {
@@ -309,25 +304,41 @@ h2::after {
     0 0 20px rgba(212, 175, 55, 0.4);
 }
 
-.contact-icon::before {
-  font-size: 36px;
+.contact-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
 }
 
-.contact-icon:hover::before {
+.contact-icon:hover img {
   transform: scale(1.1);
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.8));
 }
 
-.contact-icon.email::before {
-  content: '📧';
+/* CV Download Button */
+.download-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background: var(--royal-blue);
+  color: var(--parchment);
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1em;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 3px 3px 10px var(--shadow);
+  transition: all 0.3s ease;
 }
 
-.contact-icon.github::before {
-  content: '🪶';
-}
-
-.contact-icon.linkedin::before {
-  content: '📜';
+.download-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--deep-gold);
+  box-shadow: 5px 5px 15px var(--shadow);
 }
 
 ul {
@@ -413,21 +424,18 @@ strong {
   .parchment {
     padding: 30px 25px;
   }
-  
+
   h1 {
     font-size: 2.5em;
   }
-  
+
   h1::before,
-  h1::after {
-    display: none;
-  }
-  
+  h1::after,
   .welcome-text::before,
   .welcome-text::after {
     display: none;
   }
-  
+
   h2 {
     font-size: 1.8em;
   }
@@ -455,7 +463,13 @@ strong {
     height: 70px;
   }
 
-  .contact-icon::before {
-    font-size: 28px;
+  .contact-icon img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .download-btn {
+    font-size: 1em;
+    padding: 12px 24px;
   }
 }
